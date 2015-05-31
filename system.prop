@@ -7,7 +7,8 @@ rild.libargs=-d /dev/ttyS0
 ro.telephony.default_network=9
 telephony.lteOnGsmDevice=1
 
-ro.sf.lcd_density=320
+# System property ril adb lo
+ro.sf.lcd_density=240
 ro.lcd_min_brightness=20
 
 # System property ril adb log on
