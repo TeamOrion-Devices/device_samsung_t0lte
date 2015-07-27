@@ -23,6 +23,9 @@ LOCAL_PATH := device/samsung/t0lte
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := $(LOCAL_PATH)/bluetooth/vnd_t0lte.txt
 
+#Hardware
+BOARD_HARDWARE_CLASS += device/samsung/t0lte/cmhw
+
 # RIL
 COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{ "ril.ks.status", AID_SYSTEM, 0 },'
 
