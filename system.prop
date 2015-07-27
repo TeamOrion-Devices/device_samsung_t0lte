@@ -8,7 +8,7 @@ ro.telephony.default_network=9
 telephony.lteOnGsmDevice=1
 
 # System property ril adb lo
-ro.sf.lcd_density=240
+ro.sf.lcd_density=245
 ro.lcd_min_brightness=20
 
 # System property ril adb log on

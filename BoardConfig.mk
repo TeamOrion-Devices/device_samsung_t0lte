@@ -25,7 +25,7 @@
 BOARD_GPS_SET_PRIVACY := true
 
 # assert
-TARGET_OTA_ASSERT_DEVICE := t0lte,t0ltexx,GT-N7105,t0ltedv,GT-N7105T,t0lteatt,SGH-I317,t0ltetmo,SGH-T889,t0ltecan,t0ltevl,SGH-I317M
+TARGET_OTA_ASSERT_DEVICE := t0lte,t0ltexx,GT-N7105,t0ltedv,GT-N7105T,t0lteatt,SGH-I317,t0ltetmo,SGH-T889,t0ltecan,t0ltevl,SGH-I317M,t0ltecdma,t0ltespr,l900,SPH-L900,t0ltevzw,t0ltecdma,i605,SCH-I605
 
 # inherit from the proprietary version
 -include vendor/samsung/t0lte/BoardConfigVendor.mk
