@@ -1,14 +1,20 @@
 [
      {
          "remote": "github",
-         "repository": "jlmancuso/android_device_samsung_smdk4412-common",
+         "repository": "mrhainavn/android_device_samsung_smdk4412-common",
          "target_path": "device/samsung/smdk4412-common",
-         "branch": "lp5.1"
+         "branch": "cm-12.1"
      },
      {
          "remote": "github",
          "repository": "jlmancuso/android_device_samsung_smdk4412-qcom-common",
          "target_path": "device/samsung/smdk4412-qcom-common",
+         "branch": "lp5.1"
+     },
+     {
+         "remote": "github",
+         "repository": "mrhainavn/device_samsung_t0lte",
+         "target_path": "device/samsung/t0lte",
          "branch": "lp5.1"
      },
      {
