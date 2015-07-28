@@ -195,9 +195,6 @@
     <!-- If supported, are dreams enabled? (by default) -->
     <bool name="config_dreamsEnabledByDefault">true</bool>
 
-    <!-- Doze: force using accelerometer as pick up sensor -->
-    <bool name="config_dozeUseAccelerometer">false</bool>
-
     <!-- Enable the option to check proximity sensor when deciding whether to           
          turn the screen on             
          NOTE ! - Enable for devices that have a fast response proximity sensor         
