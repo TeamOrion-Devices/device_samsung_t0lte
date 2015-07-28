@@ -16,7 +16,6 @@
 
 LOCAL_PATH := device/samsung/t0lte
 
-PRODUCT_CHARACTERISTICS := tablet
 # Overlay
 ifeq ($(TARGET_VOICE_TECH), cdma)
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-cdma
@@ -36,14 +35,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc \
     $(LOCAL_PATH)/rootdir/ueventd.smdk4x12.rc:root/ueventd.smdk4x12.rc \
     $(LOCAL_PATH)/rootdir/ueventd.smdk4x12.rc:recovery/root/ueventd.smdk4x12.rc
-
-# Shift Kernel Stuff
-$(shell mkdir -p out/target/product/$(PRODUCT_RELEASE_NAME)/root/sbin/ext)
-$(shell cp -r $(LOCAL_PATH)/rootdir/ext out/target/product/$(PRODUCT_RELEASE_NAME)/root/sbin)
-$(shell mkdir -p out/target/product/$(PRODUCT_RELEASE_NAME)/root/res)
-$(shell cp -r $(LOCAL_PATH)/rootdir/res out/target/product/$(PRODUCT_RELEASE_NAME)/root)
-$(shell mkdir -p out/target/product/$(PRODUCT_RELEASE_NAME)/system/lib)
-$(shell cp -r $(LOCAL_PATH)/rootdir/modules out/target/product/$(PRODUCT_RELEASE_NAME)/system/lib)
 
 # Audio
 PRODUCT_PACKAGES += \
