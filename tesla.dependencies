@@ -15,7 +15,7 @@
          "remote": "github",
          "repository": "mrhainavn/device_samsung_t0lte",
          "target_path": "device/samsung/t0lte",
-         "branch": "lp5.1"
+         "branch": "teslaLP5.1"
      },
      {
          "remote": "github",

@@ -9,15 +9,15 @@ TARGET_SCREEN_WIDTH := 720
 $(call inherit-product, device/samsung/t0lte/full_t0lte.mk)
 
 # Enhanced NFC
-$(call inherit-product, vendor/broken/config/nfc_enhanced.mk)
+$(call inherit-product, vendor/tesla/config/nfc_enhanced.mk)
 
-# Inherit some common Broken stuff.
-$(call inherit-product, vendor/broken/config/cdma.mk)
-$(call inherit-product, vendor/broken/config/common_full_phone.mk)
+# Inherit some common Tesla stuff.
+$(call inherit-product, vendor/tesla/config/cdma.mk)
+$(call inherit-product, vendor/tesla/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := t0lte
-PRODUCT_NAME := broken_t0lte
+PRODUCT_NAME := tesla_t0lte
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := GT-N7105
 PRODUCT_MANUFACTURER := samsung
