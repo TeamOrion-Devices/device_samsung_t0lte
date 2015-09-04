@@ -21,6 +21,7 @@
 #include <unistd.h>
 #include <dirent.h>
 #include <sys/select.h>
+#include <pthread.h>
 
 #include <cutils/log.h>
 
@@ -29,6 +30,7 @@
 #include "SensorBase.h"
 
 /*****************************************************************************/
+static pthread_mutex_t sspEnableLock = PTHREAD_MUTEX_INITIALIZER;
 
 SensorBase::SensorBase(
         const char* dev_name,
@@ -141,38 +143,40 @@ int SensorBase::flush(int handle)
 int SensorBase::sspEnable(const char* sensorname, int sensorvalue, int en)
 {
     FILE* sspfile;
-    int oldvalue = 0;
-    int reset = 0;
-    int newvalue;
-    int fd, err;
-    char buf[12];
+    int sspValue = 0;
+
+    pthread_mutex_lock(&sspEnableLock);
 
     sspfile = fopen(SSP_DEVICE_ENABLE, "r+");
-    fscanf(sspfile, "%d", &oldvalue);
+    fscanf(sspfile, "%d", &sspValue);
     fclose(sspfile);
 
-//Accel sensor is first on and last off, if we are disabling it
-// assume the screen is off and zero everything out.
-    if(sensorvalue == SSP_ACCEL && !en) {
-        newvalue = '\0';
-        //ALOGD("SensorBase: Resetting sensors");
-    } else if(en) {
-        newvalue = oldvalue + sensorvalue;
-    } else {
-        newvalue = oldvalue - sensorvalue;
-    }
+    if (en)
+        sspValue |= sensorvalue;
+    else
+        sspValue &= ~sensorvalue;
 
-    sprintf(buf, "%d", newvalue);
+    sspWrite(sspValue);
 
+    pthread_mutex_unlock(&sspEnableLock);
+
+    return 0;
+}
+
+int SensorBase::sspWrite(int sensorvalue)
+{
+    char buf[12];
+    int fd, ret, err;
+
+    sprintf(buf, "%d", sensorvalue);
     fd = open(SSP_DEVICE_ENABLE, O_RDWR);
     if (fd >= 0) {
         err = write(fd, buf, sizeof(buf));
-        //ALOGI("%s: sensor: %i old value: %i  new value: %i ", sensorname, sensorvalue, oldvalue, newvalue);
-        close(fd);
-        return 0;
+        ret = 0;
     } else {
-        ALOGI("%s: error writing to file", sensorname);
-        close(fd);
-        return -1;
+        ALOGI("%s: error writing to file", __func__);
+        ret = -1;
     }
+    close(fd);
+    return ret;
 }
